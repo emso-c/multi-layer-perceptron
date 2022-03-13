@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 from typing import Tuple
 
-from modules.activation_functions import ActivationFunction
+from modules.activation_functions import ActivationFunction, Sigmoid
 from .input import Input
 from .utils import normalize_dataset
 
 @dataclass
 class Neuron:
-    def __init__(self, input_data:list[Input], activation_function:ActivationFunction, scale:Tuple):
+    def __init__(self, input_data:list[Input], activation_function:ActivationFunction=Sigmoid, scale:Tuple=(0,1)):
         self.input_data = input_data
         self.activation_function = activation_function
         self.scale = scale
