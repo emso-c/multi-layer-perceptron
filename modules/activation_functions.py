@@ -1,6 +1,5 @@
 from abc import ABCMeta, abstractmethod
 import math
-# TODO add
 
 
 class ActivationFunction(object):
@@ -42,3 +41,4 @@ class ActivationFunctions:
     SIGMOID = Sigmoid
     RELU = ReLU
     TANH = TanH
+    LINEAR = Linear
