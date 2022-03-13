@@ -1,5 +1,6 @@
 from abc import ABCMeta, abstractmethod
 import math
+# TODO add
 
 
 class ActivationFunction(object):
@@ -30,3 +31,14 @@ class TanH(ActivationFunction):
 
     def apply(value):
         return math.tanh(value)
+
+class Linear(ActivationFunction):
+    name = "Linear"
+
+    def apply(value):
+        return value
+
+class ActivationFunctions:
+    SIGMOID = Sigmoid
+    RELU = ReLU
+    TANH = TanH

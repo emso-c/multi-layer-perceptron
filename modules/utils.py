@@ -1,3 +1,27 @@
+from .input import Input
+import random
+from sys import maxsize
+from typing import Union
+
+def generate_random_input_data(
+        n,
+        precision:Union[int, None]=None,
+        min_val:float=-maxsize,
+        max_val:float=maxsize,
+        min_weight:float=-1,
+        max_weight:float=1
+    ) -> list[Input]:
+
+    for _ in range(n):
+        value = random.uniform(min_val, max_val)
+        weight = random.uniform(min_weight, max_weight)
+        yield Input(value=value, weight=weight)
+
+def randomize_input_weights(input_data, min_weight:float=-1, max_weight:float=1):
+    for data in input_data:
+        data.weight = random.uniform(min_weight, max_weight)
+    return input_data
+
 def normalize_dataset(dataset, min_scale:int=0, max_scale:int=100) -> list:
     normalized_dataset = []
     min_val, max_val = min(dataset), max(dataset)
@@ -31,4 +55,4 @@ def subscript_digit(digit):
         return u"\u2088"
     elif digit == 9:
         return u"\u2089"
-    raise ValueError 
+    raise ValueError
