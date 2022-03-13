@@ -19,7 +19,7 @@ def single_neuron_creation_CLI():
         min_scale = float(input("Minimum ölçütleme degerini giriniz: "))
         max_scale = float(input("Maximum ölçütleme degerini giriniz: "))
 
-        print("Aktivasyon fonksiyonu seciniz:\n1-ReLU\n2-Sigmoid\n3-TanH\n4-Linear")
+        print("Aktivasyon fonksiyonu seciniz:\n1-ReLU\n2-Sigmoid\n3-TanH")
         choice = input("Seciminiz: ")
         if choice == 1:
             activation_function = ActivationFunctions.SIGMOID
@@ -27,8 +27,6 @@ def single_neuron_creation_CLI():
             activation_function = ActivationFunctions.RELU
         elif choice == 3:
             activation_function = ActivationFunctions.TANH
-        elif choice == 4:
-            activation_function = ActivationFunctions.LINEAR
         else:
             print("Gecersiz giris, sigmoid ile devam ediliyor...")
             activation_function = ActivationFunctions.SIGMOID
@@ -38,6 +36,10 @@ def single_neuron_creation_CLI():
             min_val=min_val,
             max_val=max_val,
         ))
+
+        print("\nOlusturulan veri seti:")
+        for i, data in enumerate(input_data):
+            print(f"X{subscript(i)}: {data.value},\t W{subscript(i)}: {data.weight}")
         
         neuron = Neuron(
             input_values=input_data,
@@ -48,7 +50,7 @@ def single_neuron_creation_CLI():
 
         print("\nOlceklendirilmis veri seti:")
         for i, data in enumerate(neuron.normalized_inputs):
-            print(f"X{subscript(i)}: {data},\t W{subscript(i)}: {neuron.weights[i]}")
+            print(f"X{subscript(i)}: {data.value},\t W{subscript(i)}: {data.weight}")
 
         print("\nAgirlikli deger toplami: ", neuron.weighted_input_summary)
 
@@ -59,12 +61,10 @@ def single_neuron_creation_CLI():
             break
 
 if __name__ == '__main__':
-    #single_neuron_creation_CLI()
-
     INPUT_AMOUNT = 5
     LAYER_AMOUNT = 3
     ACTIVATION_FUNCTION = ActivationFunctions.SIGMOID
-    NORMALIZATION_SCALE = (-1, 1)
+    NORMALIZATION_SCALE = (-1,1)
     MIN_LAYER_DEPTH, MAX_LAYER_DEPTH = 1, 3
     MIN_INPUT_VALUE, MAX_INPUT_VALUE = -100000, 100000
     MIN_WEIGHT_VALUE, MAX_WEIGHT_VALUE = -1, 1
@@ -87,7 +87,15 @@ if __name__ == '__main__':
         max_weight=MAX_WEIGHT_VALUE
     )
 
- 
+    print(nn)
+    print("Layers:")
+    print("Input Layer:", nn.input_layer.inputs)
+    print("Hidden Layers:")
+    for hidden_layer in nn.hidden_layers:
+        print(hidden_layer)
+        for neuron in hidden_layer.neurons:
+            print(neuron)
+    print("Output Layer:")
     print(nn.output_layer)
     for neuron in nn.output_layer:
         print(neuron)
