@@ -10,7 +10,6 @@ from modules.utils import subscript, generate_random_input_data
 def single_neuron_creation_CLI():
     while True:
         os.system("cls")
-
         n = int(input("Girdi sayisini giriniz: "))
         min_val = float(input("Minimum girdi degerini giriniz: "))
         max_val = float(input("Maximum girdi degerini giriniz: "))
@@ -37,10 +36,6 @@ def single_neuron_creation_CLI():
             max_val=max_val,
         ))
 
-        print("\nOlusturulan veri seti:")
-        for i, data in enumerate(input_data):
-            print(f"X{subscript(i)}: {data.value},\t W{subscript(i)}: {data.weight}")
-        
         neuron = Neuron(
             input_values=input_data,
             activation_function=activation_function,
@@ -48,9 +43,13 @@ def single_neuron_creation_CLI():
         )
         neuron.randomize_input_weights(min_weight, max_weight)
 
+        print("\nOlusturulan veri seti:")
+        for i, data in enumerate(input_data):
+            print(f"X{subscript(i)}: {data},\t W{subscript(i)}: {neuron.weights[i]}")
+        
         print("\nOlceklendirilmis veri seti:")
         for i, data in enumerate(neuron.normalized_inputs):
-            print(f"X{subscript(i)}: {data.value},\t W{subscript(i)}: {data.weight}")
+            print(f"X{subscript(i)}: {data},\t W{subscript(i)}: {neuron.weights[i]}")
 
         print("\nAgirlikli deger toplami: ", neuron.weighted_input_summary)
 
@@ -61,12 +60,15 @@ def single_neuron_creation_CLI():
             break
 
 if __name__ == '__main__':
+
+    single_neuron_creation_CLI()
+    exit()
     INPUT_AMOUNT = 5
     LAYER_AMOUNT = 3
-    ACTIVATION_FUNCTION = ActivationFunctions.SIGMOID
+    ACTIVATION_FUNCTION = ActivationFunctions.TANH
     NORMALIZATION_SCALE = (-1,1)
     MIN_LAYER_DEPTH, MAX_LAYER_DEPTH = 1, 3
-    MIN_INPUT_VALUE, MAX_INPUT_VALUE = -100000, 100000
+    MIN_INPUT_VALUE, MAX_INPUT_VALUE = -1000000, 1000000
     MIN_WEIGHT_VALUE, MAX_WEIGHT_VALUE = -1, 1
 
     input_layer = InputLayer(list(generate_random_input_data(
