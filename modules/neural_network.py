@@ -2,10 +2,13 @@ from typing import Generator, Union
 from .layer import InputLayer, Layer
 
 class NeuralNetwork():
-    def __init__(self, layers:list[Union[InputLayer,Layer]], min_weight:float=-1, max_weight:float=1):
+    def __init__(self, inputs:list[int], layers:list[Union[InputLayer,Layer]], min_weight:float=-1, max_weight:float=1):
+        self.inputs = inputs
         self.layers = layers
         self.min_weight = min_weight
         self.max_weight = max_weight
+
+        self._check_input_layer_coverage()
 
         self.activate(randomize_input_weights=True)
 
@@ -16,6 +19,9 @@ class NeuralNetwork():
             Hidden Layers = {self.hidden_layers}
             Output Layer = {self.output_layer}
         """
+
+    def _check_input_layer_coverage(self) -> None:
+        assert len(self.inputs) == len(self.input_layer)
 
     @property
     def input_layer(self) -> list[int]:
