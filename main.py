@@ -72,42 +72,34 @@ if __name__ == '__main__':
     MIN_INPUT_VALUE, MAX_INPUT_VALUE = -1000000, 1000000
     MIN_WEIGHT_VALUE, MAX_WEIGHT_VALUE = -1, 1
 
-    inputs = list(generate_random_input_data(
+    input_layer = list(generate_random_input_data(
         n=INPUT_AMOUNT,
         min_val=MIN_INPUT_VALUE,
         max_val=MAX_INPUT_VALUE,
     ))
 
-
-    input_layer = generate_random_layer(
-        layer_depth=len(inputs),
-        activation_function=ACTIVATION_FUNCTION,
-        normalization_scale=NORMALIZATION_SCALE,
-    )
     layers = [generate_random_layer(
         layer_depth=random.randint(MIN_LAYER_DEPTH, MAX_LAYER_DEPTH),
         activation_function=ACTIVATION_FUNCTION,
         normalization_scale=NORMALIZATION_SCALE,
-    ) for _ in range(LAYER_AMOUNT-1)] # -1 because input layer is already defined
+    ) for _ in range(LAYER_AMOUNT)]
 
-    nn = MultiLayerPerceptron(
-        inputs = inputs,
+    mlp = MultiLayerPerceptron(
         layers = [input_layer] + layers,
         min_weight=MIN_WEIGHT_VALUE,
         max_weight=MAX_WEIGHT_VALUE
     )
 
-    print(nn)
+    print(mlp)
     print("Layers:")
-    print("Inputs:", inputs)
-    print("Input Layer:", nn.input_layer)
+    print("Inputs:", input_layer)
     print("Hidden Layers:")
-    for hidden_layer in nn.hidden_layers:
+    for hidden_layer in mlp.hidden_layers:
         print(hidden_layer)
         for neuron in hidden_layer.neurons:
             print(neuron)
     print("Output Layer:")
-    print(nn.output_layer)
-    for neuron in nn.output_layer:
+    print(mlp.output_layer)
+    for neuron in mlp.output_layer:
         print(neuron)
     
