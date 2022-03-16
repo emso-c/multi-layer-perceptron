@@ -1,13 +1,13 @@
 from typing import Generator, Union
 from abc import ABCMeta
 
-from .layer import InputLayer, Layer
+from .layer import Layer
 
 class NeuralNetwork(object):
     __metaclass__ = ABCMeta
 
 class MultiLayerPerceptron(NeuralNetwork):
-    def __init__(self, inputs:list[int], layers:list[Union[InputLayer,Layer]], min_weight:float=-1, max_weight:float=1):
+    def __init__(self, inputs:list[float], layers:list[Layer], min_weight:float=-1, max_weight:float=1):
         self.inputs = inputs
         self.layers = layers
         self.min_weight = min_weight
@@ -45,7 +45,7 @@ class MultiLayerPerceptron(NeuralNetwork):
         prev_layer = None
         for layer in self.layers[1:]:
             if prev_layer is None:
-                input_data = self.input_layer.inputs
+                input_data = self.inputs
             else:
                 input_data = [neuron.output() for neuron in prev_layer.neurons]
 

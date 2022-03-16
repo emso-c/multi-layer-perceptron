@@ -13,6 +13,9 @@ class Layer:
     def remove_neuron_by_index(self, i:int):
         del self.neurons[i]
 
+    def __len__(self):
+        return len(self.neurons)
+
     def __getitem__(self, index):
         return self.neurons[index]
 

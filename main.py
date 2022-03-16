@@ -3,7 +3,7 @@ import random
 
 from modules.perceptron import Perceptron
 from modules.neural_network import MultiLayerPerceptron
-from modules.layer import Layer, InputLayer, generate_random_layer
+from modules.layer import Layer, generate_random_layer
 from modules.activation_functions import ActivationFunctions
 from modules.utils import subscript, generate_random_input_data
 
@@ -36,7 +36,7 @@ def single_neuron_creation_CLI():
             max_val=max_val,
         ))
 
-        neuron = Perceptron(
+        neuron = Neuron(
             input_values=input_data,
             activation_function=activation_function,
             normalization_scale=(min_scale, max_scale)
@@ -61,8 +61,9 @@ def single_neuron_creation_CLI():
 
 if __name__ == '__main__':
 
-    single_neuron_creation_CLI()
-    exit()
+    # single_neuron_creation_CLI()
+    # exit()
+
     INPUT_AMOUNT = 5
     LAYER_AMOUNT = 3
     ACTIVATION_FUNCTION = ActivationFunctions.TANH
@@ -71,19 +72,26 @@ if __name__ == '__main__':
     MIN_INPUT_VALUE, MAX_INPUT_VALUE = -1000000, 1000000
     MIN_WEIGHT_VALUE, MAX_WEIGHT_VALUE = -1, 1
 
-    input_layer = InputLayer(list(generate_random_input_data(
+    inputs = list(generate_random_input_data(
         n=INPUT_AMOUNT,
         min_val=MIN_INPUT_VALUE,
         max_val=MAX_INPUT_VALUE,
-    )))
+    ))
 
+
+    input_layer = generate_random_layer(
+        layer_depth=len(inputs),
+        activation_function=ACTIVATION_FUNCTION,
+        normalization_scale=NORMALIZATION_SCALE,
+    )
     layers = [generate_random_layer(
         layer_depth=random.randint(MIN_LAYER_DEPTH, MAX_LAYER_DEPTH),
         activation_function=ACTIVATION_FUNCTION,
         normalization_scale=NORMALIZATION_SCALE,
-    ) for _ in range(LAYER_AMOUNT)]
+    ) for _ in range(LAYER_AMOUNT-1)] # -1 because input layer is already defined
 
     nn = MultiLayerPerceptron(
+        inputs = inputs,
         layers = [input_layer] + layers,
         min_weight=MIN_WEIGHT_VALUE,
         max_weight=MAX_WEIGHT_VALUE
@@ -91,7 +99,8 @@ if __name__ == '__main__':
 
     print(nn)
     print("Layers:")
-    print("Input Layer:", nn.input_layer.inputs)
+    print("Inputs:", inputs)
+    print("Input Layer:", nn.input_layer)
     print("Hidden Layers:")
     for hidden_layer in nn.hidden_layers:
         print(hidden_layer)
