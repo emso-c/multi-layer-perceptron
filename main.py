@@ -102,4 +102,3 @@ if __name__ == '__main__':
     print(mlp.output_layer)
     for neuron in mlp.output_layer:
         print(neuron)
-    
