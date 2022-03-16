@@ -6,7 +6,7 @@ from .activation_functions import ActivationFunction, Sigmoid
 from .utils import normalize_dataset
 
 @dataclass
-class Neuron:
+class Perceptron:
     def __init__(self, input_values:list[float]=[], weights:list[float]=[], activation_function:ActivationFunction=Sigmoid, normalization_scale:Tuple=(0,1)):
         self.input_data = input_values # TODO make immutable
         self.weights = weights # TODO make immutable

@@ -1,13 +1,13 @@
 from typing import Tuple
 
-from .neuron import Neuron
+from .perceptron import Perceptron
 from .activation_functions import ActivationFunction, Sigmoid
 
 class Layer:
-    def __init__(self, neurons:list[Neuron]):
+    def __init__(self, neurons:list[Perceptron]):
         self.neurons = neurons
 
-    def add_neuron(self, neuron:Neuron):
+    def add_neuron(self, neuron:Perceptron):
         self.neurons.append(neuron)
 
     def remove_neuron_by_index(self, i:int):
@@ -34,7 +34,7 @@ def generate_random_layer(
 
     layer = Layer([])
     for _ in range(layer_depth):
-        layer.add_neuron(Neuron(
+        layer.add_neuron(Perceptron(
             activation_function=activation_function,
             normalization_scale=normalization_scale
         ))
