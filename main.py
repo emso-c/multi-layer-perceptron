@@ -2,7 +2,7 @@ import os
 import random
 
 from modules.perceptron import Perceptron
-from modules.neural_network import NeuralNetwork
+from modules.neural_network import MultiLayerPerceptron
 from modules.layer import Layer, InputLayer, generate_random_layer
 from modules.activation_functions import ActivationFunctions
 from modules.utils import subscript, generate_random_input_data
@@ -83,7 +83,7 @@ if __name__ == '__main__':
         normalization_scale=NORMALIZATION_SCALE,
     ) for _ in range(LAYER_AMOUNT)]
 
-    nn = NeuralNetwork(
+    nn = MultiLayerPerceptron(
         layers = [input_layer] + layers,
         min_weight=MIN_WEIGHT_VALUE,
         max_weight=MAX_WEIGHT_VALUE

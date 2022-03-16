@@ -1,7 +1,12 @@
 from typing import Generator, Union
+from abc import ABCMeta
+
 from .layer import InputLayer, Layer
 
-class NeuralNetwork():
+class NeuralNetwork(object):
+    __metaclass__ = ABCMeta
+
+class MultiLayerPerceptron(NeuralNetwork):
     def __init__(self, inputs:list[int], layers:list[Union[InputLayer,Layer]], min_weight:float=-1, max_weight:float=1):
         self.inputs = inputs
         self.layers = layers
@@ -14,7 +19,7 @@ class NeuralNetwork():
 
     def __repr__(self):
         return f"""
-        <class=NeuralNetwork>
+        <class=MultiLayerPerceptron>
             Input Layer = {self.input_layer}
             Hidden Layers = {self.hidden_layers}
             Output Layer = {self.output_layer}
