@@ -1,7 +1,7 @@
 import os
 import random
 
-from modules.neuron import Neuron
+from modules.perceptron import Perceptron
 from modules.neural_network import NeuralNetwork
 from modules.layer import Layer, InputLayer, generate_random_layer
 from modules.activation_functions import ActivationFunctions
@@ -36,7 +36,7 @@ def single_neuron_creation_CLI():
             max_val=max_val,
         ))
 
-        neuron = Neuron(
+        neuron = Perceptron(
             input_values=input_data,
             activation_function=activation_function,
             normalization_scale=(min_scale, max_scale)
