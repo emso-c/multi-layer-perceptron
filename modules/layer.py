@@ -19,13 +19,6 @@ class Layer:
     def __repr__(self):
         return f"Layer object with {len(self.neurons)} neurons"
 
-class InputLayer:
-    def __init__(self, inputs:list[int]):
-        self.inputs = inputs
-
-    def __repr__(self):
-        return f"InputLayer object with {len(self.inputs)} inputs"
-
 def generate_random_layer(
         layer_depth:int,
         activation_function:ActivationFunction=Sigmoid,
