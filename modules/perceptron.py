@@ -14,7 +14,7 @@ class Perceptron:
         self.normalization_scale = normalization_scale
 
     def __str__(self):
-        return f"""\t<class=Neuron>
+        return f"""\t<class=Perceptron>
             Inputs: {self.input_data}
             Weights: {self.weights}
             Activation function: {self.activation_function.name}
