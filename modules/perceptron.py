@@ -7,8 +7,8 @@ from .utils import normalize_dataset
 
 @dataclass
 class Perceptron:
-    def __init__(self, input_values:list[float]=[], weights:list[float]=[], activation_function:ActivationFunction=Sigmoid, normalization_scale:Tuple=(0,1)):
-        self.input_data = input_values # TODO make immutable
+    def __init__(self, input_data:list[float]=[], weights:list[float]=[], activation_function:ActivationFunction=Sigmoid, normalization_scale:Tuple=(0,1)):
+        self.input_data = input_data # TODO make immutable
         self.weights = weights # TODO make immutable
         self.activation_function = activation_function
         self.normalization_scale = normalization_scale
