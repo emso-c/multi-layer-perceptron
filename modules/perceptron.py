@@ -31,7 +31,7 @@ class Perceptron:
         return self.weights
 
     @property
-    def weighted_input_summary(self):
+    def weighted_input_summary(self) -> float:
         sum=0
         for i in range(len(self.normalized_inputs)):
             sum+=self.normalized_inputs[i]*self.weights[i]
