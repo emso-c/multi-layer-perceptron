@@ -9,7 +9,7 @@ from modules.cli import single_neuron_creation_CLI
 
 if __name__ == '__main__':
 
-    single_neuron_creation_CLI()
+    #single_neuron_creation_CLI()
 
     INPUT_AMOUNT = 5
     LAYER_AMOUNT = 3
@@ -38,14 +38,13 @@ if __name__ == '__main__':
     )
 
     print(mlp)
-    print("Layers:")
     print("Inputs:", input_layer)
-    print("Hidden Layers:")
+    print("Layers:\n")
+    print("Hidden Layers:\n")
     for hidden_layer in mlp.hidden_layers:
-        print(hidden_layer)
+        print(str(hidden_layer)+"\n")
         for neuron in hidden_layer.neurons:
             print(neuron)
-    print("Output Layer:")
-    print(mlp.output_layer)
+    print(f"Output Layer: {str(mlp.output_layer)}\n")
     for neuron in mlp.output_layer:
         print(neuron)
