@@ -24,12 +24,13 @@ class Perceptron:
         self.bias = bias
 
     def __str__(self):
-        return "<class=Perceptron>\nInputs: {}\nWeights: {}\nActivation function: {}\nSummation function: {}\nNormalization Scale: {}\nOutput: {}\n".format(
+        return "<class=Perceptron>\n\tInputs: {}\n\tWeights: {}\n\tActivation function: {}\n\tSummation function: {}\n\tNormalization Scale: {}\n\tBias: {}\n\tOutput: {}\n".format(
             self.input_data,
             self.weights,
             self.activation_function.name,
             self.summation_function.name,
             self.normalization_scale,
+            self.bias,
             self.output(),
         )
 
