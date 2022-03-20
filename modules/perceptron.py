@@ -13,13 +13,15 @@ class Perceptron:
             weights:list[float]=[],
             activation_function:ActivationFunction=Sigmoid,
             summation_function:SummationFunction=WeightedTotal,
-            normalization_scale:Tuple=(0,1)
+            normalization_scale:Tuple=(0,1),
+            bias:float=1
         ):
         self.input_data = input_data # TODO make immutable
         self.weights = weights # TODO make immutable
         self.activation_function = activation_function
         self.summation_function = summation_function
         self.normalization_scale = normalization_scale
+        self.bias = bias
 
     def __str__(self):
         return "<class=Perceptron>\nInputs: {}\nWeights: {}\nActivation function: {}\nSummation function: {}\nNormalization Scale: {}\nOutput: {}\n".format(
@@ -55,4 +57,4 @@ class Perceptron:
         )
 
     def output(self) -> float:
-        return self.activation_function.apply(self.summation)
+        return self.activation_function.apply(self.summation+self.bias)
