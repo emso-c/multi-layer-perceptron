@@ -15,12 +15,11 @@ class MultiLayerPerceptron(NeuralNetwork):
         self.activate(randomize_input_weights=True)
 
     def __repr__(self):
-        return f"""
-        <class=MultiLayerPerceptron>
-            Input Layer = {self.input_layer}
-            Hidden Layers = {self.hidden_layers}
-            Output Layer = {self.output_layer}
-        """
+        return "<class=MultiLayerPerceptron>\n\tInput Layer = {}\n\tHidden Layers = {}\n\tOutput Layer = {}\n".format(
+            self.input_layer,
+            self.hidden_layers,
+            self.output_layer,
+        )
 
     @property
     def input_layer(self) -> list[int]:
