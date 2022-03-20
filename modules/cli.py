@@ -48,7 +48,7 @@ def single_neuron_creation_CLI():
         for i, data in enumerate(neuron.normalized_inputs):
             print(f"X{subscript(i)}: {data},\t W{subscript(i)}: {neuron.weights[i]}")
 
-        print("\nAgirlikli deger toplami: ", neuron.weighted_input_summary)
+        print("\nAgirlikli deger toplami: ", neuron.summation)
 
         print("\nCikti: ", neuron.output())
 
