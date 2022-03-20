@@ -38,8 +38,8 @@ class Perceptron:
         self.input_data.append(value)
         self.weights.append(weight)
 
-    def randomize_input_weights(self, min_weight:float=-1, max_weight:float=1) -> list[float]:
-        self.weights = [random.uniform(min_weight, max_weight) for _ in range(len(self.input_data))]
+    def randomize_input_weights(self, weight_range:Tuple[float, float]=(-1.0, 1.0)) -> list[float]:
+        self.weights = [random.uniform(weight_range[0], weight_range[1]) for _ in range(len(self.input_data))]
         return self.weights
 
     @property

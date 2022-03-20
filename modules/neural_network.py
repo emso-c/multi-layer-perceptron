@@ -1,4 +1,4 @@
-from typing import Generator, Union
+from typing import Generator, Tuple, Union
 from abc import ABCMeta
 
 from .layer import Layer
@@ -7,10 +7,9 @@ class NeuralNetwork(object):
     __metaclass__ = ABCMeta
 
 class MultiLayerPerceptron(NeuralNetwork):
-    def __init__(self, layers:list[Layer], min_weight:float=-1, max_weight:float=1):
+    def __init__(self, layers:list[Layer], weight_range:Tuple[float, float]=(-1.0, 1.0)):
         self.layers = layers
-        self.min_weight = min_weight
-        self.max_weight = max_weight
+        self.weight_range = weight_range
 
         self.activate(randomize_input_weights=True)
 
@@ -43,7 +42,7 @@ class MultiLayerPerceptron(NeuralNetwork):
             for neuron in layer.neurons:
                 neuron.input_data = input_data
                 if randomize_input_weights:
-                    neuron.randomize_input_weights(self.min_weight, self.max_weight)
+                    neuron.randomize_input_weights(self.weight_range)
             prev_layer = layer
 
     def output(self) -> Generator[float, None, None]:

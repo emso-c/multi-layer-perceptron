@@ -18,9 +18,9 @@ if __name__ == '__main__':
     ACTIVATION_FUNCTION = ActivationFunctions.TANH
     SUMMATION_FUNCTION = SummationFunctions.WEIGHTED_TOTAL
     NORMALIZATION_SCALE = (-1,1)
+    WEIGHT_RANGE = (-1, 1)
     MIN_LAYER_DEPTH, MAX_LAYER_DEPTH = 1, 3
     MIN_INPUT_VALUE, MAX_INPUT_VALUE = -1000000, 1000000
-    MIN_WEIGHT_VALUE, MAX_WEIGHT_VALUE = -1, 1
 
     input_layer = list(generate_random_input_data(
         n=INPUT_AMOUNT,
@@ -38,8 +38,7 @@ if __name__ == '__main__':
 
     mlp = MultiLayerPerceptron(
         layers = [input_layer] + layers,
-        min_weight=MIN_WEIGHT_VALUE,
-        max_weight=MAX_WEIGHT_VALUE
+        weight_range=WEIGHT_RANGE
     )
 
     print(mlp)
