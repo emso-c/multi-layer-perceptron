@@ -14,13 +14,14 @@ class Perceptron:
         self.normalization_scale = normalization_scale
 
     def __str__(self):
-        return f"""\t<class=Perceptron>
-            Inputs: {self.input_data}
-            Weights: {self.weights}
-            Activation function: {self.activation_function.name}
-            Normalization Scale: {self.normalization_scale}
-            Output: {self.output()}
-        """
+        return "<class=Perceptron>\nInputs: {}\nWeights: {}\nActivation function: {}\nSummation function: {}\nNormalization Scale: {}\nOutput: {}\n".format(
+            self.input_data,
+            self.weights,
+            self.activation_function.name,
+            self.summation_function.name,
+            self.normalization_scale,
+            self.output(),
+        )
 
     def add_input(self, value, weight):
         self.input_data.append(value)
