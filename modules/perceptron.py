@@ -56,6 +56,17 @@ class Perceptron:
             inputs = self.normalized_inputs,
             weights = self.weights
         )
-
-    def output(self) -> float:
+    
+    def normalized_output(self) -> float:
         return self.activation_function.apply(self.summation+self.bias)
+
+    def _denormalized_output(self) -> float:
+        denormalized_dataset = normalize_dataset( 
+            self.normalized_inputs + [self.normalized_output()],
+            min(self.input_data),
+            max(self.input_data),
+        )
+        return denormalized_dataset[-1]
+        
+    def output(self) -> float:
+        return self._denormalized_output()
