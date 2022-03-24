@@ -17,7 +17,7 @@ def generate_random_input_data(
         data.weight = random.uniform(min_weight, max_weight)
     return input_data """
 
-def normalize_dataset(dataset:list[int], min_scale:int=0, max_scale:int=10) -> list:
+def normalize_dataset(dataset:list[float], min_scale:float=0, max_scale:float=10) -> list:
     if len(dataset) <= 1: return dataset
 
     normalized_dataset = []
