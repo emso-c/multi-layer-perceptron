@@ -7,6 +7,13 @@ from .summation_functions import SummationFunction, WeightedTotal
 class Layer:
     def __init__(self, perceptrons:list[Perceptron], bias):
         self.perceptrons = perceptrons
+        self.bias = bias
+
+        self._update_biases()
+    
+    def _update_biases(self) -> None:
+        for perceptron in self.perceptrons:
+            perceptron.bias = self.bias
 
     def add_perceptron(self, perceptron:Perceptron):
         self.perceptrons.append(perceptron)
