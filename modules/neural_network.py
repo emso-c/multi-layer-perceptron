@@ -38,13 +38,13 @@ class MultiLayerPerceptron(NeuralNetwork):
             if prev_layer is None:
                 input_data = self.input_layer
             else:
-                input_data = [neuron.output() for neuron in prev_layer.neurons]
-            for neuron in layer.neurons:
-                neuron.input_data = input_data
+                input_data = [perceptron.output() for perceptron in prev_layer.perceptrons]
+            for perceptron in layer.perceptrons:
+                perceptron.input_data = input_data
                 if randomize_input_weights:
-                    neuron.randomize_input_weights(self.weight_range)
+                    perceptron.randomize_input_weights(self.weight_range)
             prev_layer = layer
 
     def output(self) -> Generator[float, None, None]:
-        for neuron in self.output_layer.neurons:
-            yield neuron.output()
+        for perceptron in self.output_layer.perceptrons:
+            yield perceptron.output()

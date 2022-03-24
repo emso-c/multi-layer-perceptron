@@ -47,8 +47,8 @@ if __name__ == '__main__':
     print("Hidden Layers:\n")
     for hidden_layer in mlp.hidden_layers:
         print(str(hidden_layer)+"\n")
-        for neuron in hidden_layer.neurons:
-            print(neuron)
+        for perceptron in hidden_layer.perceptrons:
+            print(perceptron)
     print(f"Output Layer: {str(mlp.output_layer)}\n")
-    for neuron in mlp.output_layer:
-        print(neuron)
+    for perceptron in mlp.output_layer:
+        print(perceptron)

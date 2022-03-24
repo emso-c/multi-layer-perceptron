@@ -5,23 +5,23 @@ from .activation_functions import ActivationFunction, Sigmoid
 from .summation_functions import SummationFunction, WeightedTotal
 
 class Layer:
-    def __init__(self, neurons:list[Perceptron]):
-        self.neurons = neurons
+    def __init__(self, perceptrons:list[Perceptron], bias):
+        self.perceptrons = perceptrons
 
-    def add_neuron(self, neuron:Perceptron):
-        self.neurons.append(neuron)
+    def add_perceptron(self, perceptron:Perceptron):
+        self.perceptrons.append(perceptron)
 
-    def remove_neuron_by_index(self, i:int):
-        del self.neurons[i]
+    def remove_perceptron_by_index(self, i:int):
+        del self.perceptrons[i]
 
     def __len__(self):
-        return len(self.neurons)
+        return len(self.perceptrons)
 
     def __getitem__(self, index):
-        return self.neurons[index]
+        return self.perceptrons[index]
 
     def __repr__(self):
-        return f"Layer object with {len(self.neurons)} neurons"
+        return f"Layer object with {len(self.perceptrons)} perceptrons"
 
 def generate_random_layer(
         layer_depth:int,
@@ -33,7 +33,7 @@ def generate_random_layer(
 
     layer = Layer([])
     for _ in range(layer_depth):
-        layer.add_neuron(Perceptron(
+        layer.add_perceptron(Perceptron(
             activation_function=activation_function,
             normalization_scale=normalization_scale,
             summation_function=summation_function,
