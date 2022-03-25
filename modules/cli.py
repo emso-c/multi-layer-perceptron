@@ -12,8 +12,8 @@ def single_perceptron_creation_CLI():
         max_val = float(input("Maximum girdi degerini giriniz: "))
         min_weight = float(input("Minimum girdi agirlik katsayisini giriniz: "))
         max_weight = float(input("Maximum girdi agirlik katsayisini giriniz: "))
-        min_scale = float(input("Minimum ölçütleme degerini giriniz: "))
-        max_scale = float(input("Maximum ölçütleme degerini giriniz: "))
+        min_scale = float(input("Minimum olçutleme degerini giriniz: "))
+        max_scale = float(input("Maximum olçutleme degerini giriniz: "))
 
         print("Aktivasyon fonksiyonu seciniz:\n1-ReLU\n2-Sigmoid\n3-TanH")
         choice = int(input("Seciminiz: "))
