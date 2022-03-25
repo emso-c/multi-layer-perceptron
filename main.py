@@ -1,9 +1,7 @@
 import random
 
 from modules.neural_network import MultiLayerPerceptron
-from modules.layer import Layer, generate_random_layer
-from modules.activation_functions import ActivationFunctions
-from modules.summation_functions import SummationFunctions
+from modules.layer import generate_random_layer
 from modules.utils import generate_random_input_data
 
 from config import *
