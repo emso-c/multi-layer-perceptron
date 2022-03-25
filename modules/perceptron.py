@@ -16,8 +16,8 @@ class Perceptron:
             normalization_scale:Tuple=(0,1),
             bias:float=1
         ):
-        self.input_data = input_data # TODO make immutable
-        self.weights = weights # TODO make immutable
+        self.input_data = input_data
+        self.weights = weights
         self.activation_function = activation_function
         self.summation_function = summation_function
         self.normalization_scale = normalization_scale
