@@ -15,10 +15,10 @@ class Layer:
         for perceptron in self.perceptrons:
             perceptron.bias = self.bias
 
-    def add_perceptron(self, perceptron:Perceptron):
+    def add_perceptron(self, perceptron:Perceptron) -> None:
         self.perceptrons.append(perceptron)
 
-    def remove_perceptron_by_index(self, i:int):
+    def remove_perceptron_by_index(self, i:int) -> None:
         del self.perceptrons[i]
 
     def __len__(self):

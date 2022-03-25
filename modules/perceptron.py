@@ -34,7 +34,7 @@ class Perceptron:
             self.output(),
         )
 
-    def add_input(self, value, weight):
+    def add_input(self, value, weight) -> None:
         self.input_data.append(value)
         self.weights.append(weight)
 
@@ -43,7 +43,7 @@ class Perceptron:
         return self.weights
 
     @property
-    def normalized_inputs(self):
+    def normalized_inputs(self) -> list[float]:
         return normalize_dataset(
             self.input_data,
             self.normalization_scale[0],
@@ -51,7 +51,7 @@ class Perceptron:
         )
     
     @property
-    def summation(self):
+    def summation(self) -> float:
         return self.summation_function.apply(
             inputs = self.normalized_inputs,
             weights = self.weights

@@ -12,7 +12,7 @@ def generate_random_input_data(
     for _ in range(n):
         yield random.uniform(min_val, max_val)
 
-def normalize_dataset(dataset:list[float], min_scale:float=0, max_scale:float=10) -> list:
+def normalize_dataset(dataset:list[float], min_scale:float=0, max_scale:float=10) -> list[float]:
     if len(dataset) <= 1: return dataset
 
     min_val, max_val = min(dataset), max(dataset)
@@ -25,7 +25,7 @@ def normalize_dataset(dataset:list[float], min_scale:float=0, max_scale:float=10
         )
     return normalized_dataset
 
-def subscript(num):
+def subscript(num) -> str:
     return ''.join([subscript_digit(int(d)) for d in str(num)])
 
 def subscript_digit(digit) -> str:
