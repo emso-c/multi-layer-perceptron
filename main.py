@@ -3,16 +3,14 @@ import random
 from modules.neural_network import MultiLayerPerceptron
 from modules.layer import generate_random_layer
 from modules.utils import generate_random_input_data
+from modules.cli import single_perceptron_creation_CLI
 
 from config import *
 
-from modules.cli import single_neuron_creation_CLI
 
 random.seed(RANDOM_SEED)
 
 if __name__ == '__main__':
-
-    #single_neuron_creation_CLI()
 
     input_layer = list(generate_random_input_data(
         n=INPUT_AMOUNT,
