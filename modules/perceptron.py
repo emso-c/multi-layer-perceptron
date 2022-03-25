@@ -69,4 +69,11 @@ class Perceptron:
         return denormalized_dataset[-1]
         
     def output(self) -> float:
+        if len(self.input_data) == 1:
+            fnet = self.summation_function.apply(
+                inputs = self.input_data,
+                weights = self.weights
+            )
+            return self.activation_function.apply(fnet+self.bias)
+
         return self._denormalized_output()
