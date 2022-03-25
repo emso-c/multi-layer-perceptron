@@ -6,21 +6,13 @@ from modules.activation_functions import ActivationFunctions
 from modules.summation_functions import SummationFunctions
 from modules.utils import generate_random_input_data
 
+from config import *
+
 from modules.cli import single_neuron_creation_CLI
 
 if __name__ == '__main__':
 
     #single_neuron_creation_CLI()
-
-    INPUT_AMOUNT = 5
-    LAYER_AMOUNT = 3
-    BIAS = 1
-    ACTIVATION_FUNCTION = ActivationFunctions.TANH
-    SUMMATION_FUNCTION = SummationFunctions.WEIGHTED_TOTAL
-    NORMALIZATION_SCALE = (-1,1)
-    WEIGHT_RANGE = (-1, 1)
-    MIN_LAYER_DEPTH, MAX_LAYER_DEPTH = 1, 3
-    MIN_INPUT_VALUE, MAX_INPUT_VALUE = -1000000, 1000000
 
     input_layer = list(generate_random_input_data(
         n=INPUT_AMOUNT,
