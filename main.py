@@ -8,6 +8,8 @@ from config import *
 
 from modules.cli import single_neuron_creation_CLI
 
+random.seed(RANDOM_SEED)
+
 if __name__ == '__main__':
 
     #single_neuron_creation_CLI()
