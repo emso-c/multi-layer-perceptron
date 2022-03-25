@@ -4,7 +4,7 @@ from .activation_functions import ActivationFunctions
 from .utils import subscript, generate_random_input_data
 
 
-def single_neuron_creation_CLI():
+def single_perceptron_creation_CLI():
     while True:
         os.system("cls")
         n = int(input("Girdi sayisini giriniz: "))
@@ -16,7 +16,7 @@ def single_neuron_creation_CLI():
         max_scale = float(input("Maximum ölçütleme degerini giriniz: "))
 
         print("Aktivasyon fonksiyonu seciniz:\n1-ReLU\n2-Sigmoid\n3-TanH")
-        choice = input("Seciminiz: ")
+        choice = int(input("Seciminiz: "))
         if choice == 1:
             activation_function = ActivationFunctions.SIGMOID
         elif choice == 2:
@@ -33,24 +33,24 @@ def single_neuron_creation_CLI():
             max_val=max_val,
         ))
 
-        neuron = Perceptron(
+        perceptron = Perceptron(
             input_data=input_data,
             activation_function=activation_function,
             normalization_scale=(min_scale, max_scale)
         )
-        neuron.randomize_input_weights(min_weight, max_weight)
+        perceptron.randomize_input_weights((min_weight, max_weight))
 
         print("\nOlusturulan veri seti:")
         for i, data in enumerate(input_data):
-            print(f"X{subscript(i)}: {data},\t W{subscript(i)}: {neuron.weights[i]}")
+            print(f"X{subscript(i)}: {data},\t W{subscript(i)}: {perceptron.weights[i]}")
         
         print("\nOlceklendirilmis veri seti:")
-        for i, data in enumerate(neuron.normalized_inputs):
-            print(f"X{subscript(i)}: {data},\t W{subscript(i)}: {neuron.weights[i]}")
+        for i, data in enumerate(perceptron.normalized_inputs):
+            print(f"X{subscript(i)}: {data},\t W{subscript(i)}: {perceptron.weights[i]}")
 
-        print("\nAgirlikli deger toplami: ", neuron.summation)
+        print("\nAgirlikli deger toplami: ", perceptron.summation)
 
-        print("\nCikti: ", neuron.output())
+        print("\nCikti: ", perceptron.output())
 
         res = input("\nDevam etmek istiyor musunuz? (e/h): ")
         if res != "e":
