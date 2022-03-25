@@ -15,8 +15,10 @@ def generate_random_input_data(
 def normalize_dataset(dataset:list[float], min_scale:float=0, max_scale:float=10) -> list:
     if len(dataset) <= 1: return dataset
 
-    normalized_dataset = []
     min_val, max_val = min(dataset), max(dataset)
+    if min_val == max_val: return dataset
+
+    normalized_dataset = []
     for num in dataset:
         normalized_dataset.append(
             ((num-min_val)/(max_val-min_val))*(max_scale-min_scale)+min_scale
