@@ -74,6 +74,11 @@ class Perceptron:
                 inputs = self.input_data,
                 weights = self.weights
             )
+            # FIX: If a neuron has only one input, the value can not be normalized. (?)
+            # And if it can't be normalized, the output might be outside of activation
+            # function range, which produces inaccurate results.
+            # Maybe should set a rule to make sure that each layer except the output layer
+            # has at least two perceptrons?
             return self.activation_function.apply(fnet+self.bias)
 
         return self._denormalized_output()
