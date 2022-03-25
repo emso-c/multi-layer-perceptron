@@ -5,13 +5,13 @@ from .activation_functions import ActivationFunction, Sigmoid
 from .summation_functions import SummationFunction, WeightedTotal
 
 class Layer:
-    def __init__(self, perceptrons:list[Perceptron], bias):
+    def __init__(self, perceptrons:list[Perceptron], bias:float=1):
         self.perceptrons = perceptrons
         self.bias = bias
 
-        self._update_biases()
+        self.update_biases()
     
-    def _update_biases(self) -> None:
+    def update_biases(self) -> None:
         for perceptron in self.perceptrons:
             perceptron.bias = self.bias
 
